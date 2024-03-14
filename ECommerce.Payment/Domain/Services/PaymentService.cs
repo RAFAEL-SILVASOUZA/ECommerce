@@ -2,10 +2,11 @@
 using ECommerce.Payment.Domain.Services.Contracts;
 using ECommerce.Payment.Infra;
 using ECommerce.Payment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Payment.Domain.Services;
 
-public class PaymentService : ICapSubscribe, IPaymentService
+public class PaymentService : IPaymentService, ICapSubscribe
 {
     private readonly PaymentDbContext _paymentDbContext;
     private readonly ICapPublisher _capPublisher;
@@ -39,4 +40,10 @@ public class PaymentService : ICapSubscribe, IPaymentService
         await _paymentDbContext.SaveChangesAsync();
         await _capPublisher.PublishAsync("ecomerce.order.status.payment", paymentResponseDto);
     }
+
+    public async Task<Entities.Payment?> GetPaymentByOrderAsync(Guid orderId)
+       => await _paymentDbContext
+                .Payments
+                .Where(x => x.OrderId == orderId)
+                .FirstOrDefaultAsync();
 }

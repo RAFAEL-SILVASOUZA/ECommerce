@@ -37,7 +37,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardName\": \"JOSE DA SILVA SOUZA\",\r\n    \"cardNumber\": \"5303441233248292\",\r\n    \"validDate\": \"2024-06-16\",\r\n    \"cvv\": \"467\",\r\n    \"items\": [\r\n        {\r\n            \"itemId\": \"b32cb73e-9b62-46af-93be-20f3540ba9f2\",\r\n            \"quantity\":10\r\n        },\r\n        {\r\n            \"itemId\": \"8b3af8b5-b089-42d2-a587-23286d1e06b3\",\r\n            \"quantity\":10\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"cardName\": \"JOSE DA SILVA SOUZA\",\r\n    \"cardNumber\": \"5303441233248292\",\r\n    \"validDate\": \"2024-06-16\",\r\n    \"cvv\": \"467\",\r\n    \"items\": [\r\n        {\r\n            \"itemId\": \"b32cb73e-9b62-46af-93be-20f3540ba9f2\",\r\n            \"quantity\":5\r\n        },\r\n        {\r\n            \"itemId\": \"8b3af8b5-b089-42d2-a587-23286d1e06b3\",\r\n            \"quantity\":5\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

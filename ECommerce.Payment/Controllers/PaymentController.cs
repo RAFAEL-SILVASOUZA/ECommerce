@@ -1,29 +1,18 @@
-﻿using ECommerce.Payment.Infra;
+﻿using ECommerce.Payment.Domain.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce.Payment.Controllers
+namespace ECommerce.Payment.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class PaymentController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PaymentController : ControllerBase
-    {
-        private readonly PaymentDbContext _paymentDbContext;
+    private readonly IPaymentService _paymentService;
 
-        public PaymentController(PaymentDbContext paymentDbContext)
-        {
-            _paymentDbContext = paymentDbContext;
-        }
+    public PaymentController(IPaymentService paymentService)
+       => _paymentService = paymentService;
 
-        [HttpGet("orderId")]
-        public async Task<IActionResult> Get([FromQuery] Guid orderId)
-        {
-            var payments = await _paymentDbContext
-                .Payments
-                .Where(x => x.OrderId == orderId)
-                .FirstOrDefaultAsync();
-
-            return Ok(payments);
-        }
-    }
+    [HttpGet("{orderId}")]
+    public async Task<Domain.Entities.Payment?> Get([FromRoute] Guid orderId)
+       => await _paymentService.GetPaymentByOrderAsync(orderId);
 }

@@ -24,7 +24,7 @@
 			"response": []
 		},
 		{
-			"name": "Get All Products by Ids",
+			"name": "Get All Product by Id",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -46,6 +46,25 @@
 							"key": "ids",
 							"value": "8b3af8b5-b089-42d2-a587-23286d1e06b3"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Quantity",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/catalog/8b3af8b5-b089-42d2-a587-23286d1e06b3/100",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"catalog",
+						"8b3af8b5-b089-42d2-a587-23286d1e06b3",
+						"100"
 					]
 				}
 			},

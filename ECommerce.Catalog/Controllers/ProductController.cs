@@ -22,7 +22,7 @@ public class ProductController : ControllerBase
        => await _productService.GetProductsByIdsAsync(ids);
 
 
-    [HttpPatch("id")]
-    public async Task<Product> Patch([FromQuery] Guid id, [FromBody] int quantity)
+    [HttpPatch("{id}/{quantity}")]
+    public async Task<Product> Patch([FromRoute] Guid id, [FromRoute] int quantity)
     => await _productService.ChangeQuantityByProductIdAsync(id, quantity);
 }
