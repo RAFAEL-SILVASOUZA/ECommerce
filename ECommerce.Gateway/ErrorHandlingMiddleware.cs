@@ -1,47 +1,46 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
 
-namespace ECommerce.Gateway
+namespace ECommerce.Gateway;
+
+public class ErrorHandlingMiddleware
 {
-    public class ErrorHandlingMiddleware
+    private readonly RequestDelegate next;
+
+    public ErrorHandlingMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate next;
+        this.next = next;
+    }
 
-        public ErrorHandlingMiddleware(RequestDelegate next)
+    public async Task Invoke(HttpContext context /* other dependencies */)
+    {
+        try
         {
-            this.next = next;
+            await next(context);
         }
-
-        public async Task Invoke(HttpContext context /* other dependencies */)
+        catch (Exception ex)
         {
-            try
-            {
-                await next(context);
-            }
-            catch (Exception ex)
-            {
-                await HandleExceptionAsync(context, ex);
-            }
-        }
-
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
-        {
-            var code = HttpStatusCode.InternalServerError;
-
-            if (exception is Exception) code = HttpStatusCode.NotFound;
-
-            var result = JsonConvert.SerializeObject(new { error = exception.Message });
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
-            return context.Response.WriteAsync(result);
+            await HandleExceptionAsync(context, ex);
         }
     }
 
-    public static class ErrorHandlingMiddlewareExtensions
+    private static Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
-        {
-            app.UseMiddleware<ErrorHandlingMiddleware>();
-        }
+        var code = HttpStatusCode.InternalServerError;
+
+        if (exception is Exception) code = HttpStatusCode.NotFound;
+
+        var result = JsonConvert.SerializeObject(new { error = exception.Message });
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)code;
+        return context.Response.WriteAsync(result);
+    }
+}
+
+public static class ErrorHandlingMiddlewareExtensions
+{
+    public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ErrorHandlingMiddleware>();
     }
 }

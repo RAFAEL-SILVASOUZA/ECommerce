@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "20d0a6f9-a03c-496d-bcbf-0a776eaf94f4",
+		"_postman_id": "3a5eff10-d82e-4143-995e-29fc6fd8cce7",
 		"name": "Catalog",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3853512"
@@ -12,12 +12,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/Catalog",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Catalog",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"Catalog"
 					]
@@ -31,12 +29,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/catalog/ids?ids=b32cb73e-9b62-46af-93be-20f3540ba9f2&ids=8b3af8b5-b089-42d2-a587-23286d1e06b3",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/catalog/ids?ids=b32cb73e-9b62-46af-93be-20f3540ba9f2&ids=8b3af8b5-b089-42d2-a587-23286d1e06b3",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"catalog",
 						"ids"

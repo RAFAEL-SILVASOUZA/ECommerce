@@ -8,6 +8,7 @@ public class PaymentResponse
         ProccessDate = DateTime.Now;
         Amount = payment.Amount;
         PaymentStatus = GetStatus(payment.Amount, gatewayEnum);
+        Description = GetDescrition();
     }
 
     private PaymentStatus GetStatus(decimal amount, GatewayEnum gatewayEnum)
@@ -23,8 +24,22 @@ public class PaymentResponse
         }
     }
 
+    private string GetDescrition()
+    {
+        switch (PaymentStatus)
+        {
+            case PaymentStatus.Rejected:
+                return "Insufficient balance";
+            case PaymentStatus.Accepted:
+                return "Balance consumed";
+            default:
+                return "";
+        }
+    }
+
     public Guid TranzactionId { get; set; }
     public DateTime ProccessDate { get; set; }
     public decimal Amount { get; set; }
+    public string Description { get; set; }
     public PaymentStatus PaymentStatus { get; set; }
 }

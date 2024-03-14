@@ -1,4 +1,5 @@
 ﻿using ECommerce.Catalog.Domain.Consumer;
+using ECommerce.Catalog.Domain.Services.Contrects;
 using ECommerce.Catalog.Infra;
 
 namespace ECommerce.Catalog.Extensions
@@ -7,7 +8,7 @@ namespace ECommerce.Catalog.Extensions
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddTransient<IProductConsumer, ProductConsumer>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddDbContext<CatalogDBContext>();
         }
     }

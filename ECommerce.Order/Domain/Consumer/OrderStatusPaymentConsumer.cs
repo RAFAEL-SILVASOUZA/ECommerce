@@ -17,19 +17,12 @@ namespace ECommerce.Order.Domain.Consumer
         [CapSubscribe("ecomerce.order.status.payment")]
         public async Task ProccessMessage(PurchaseOrderPaymentResponse purchaseOrderPaymentResponse)
         {
-            switch (purchaseOrderPaymentResponse.PaymentStatus)
-            {
-                case PaymentStatus.Accepted:
-                    await _purchaseOrderService.ChangeStatus(purchaseOrderPaymentResponse.OrderId, OrderStatus.Acepted,
-                        purchaseOrderPaymentResponse.GatewayName, purchaseOrderPaymentResponse.TranzactionId);
-                    return;
-                case PaymentStatus.Rejected:
-                    await _purchaseOrderService.ChangeStatus(purchaseOrderPaymentResponse.OrderId, OrderStatus.Rejected,
-                        purchaseOrderPaymentResponse.GatewayName, purchaseOrderPaymentResponse.TranzactionId);
-                    break;
-            }
+            var orderStatus = purchaseOrderPaymentResponse.PaymentStatus == PaymentStatus.Accepted
+                ? OrderStatus.Acepted
+                : OrderStatus.Rejected;
+
+            await _purchaseOrderService.ChangeStatusAsync(purchaseOrderPaymentResponse.OrderId, orderStatus,
+                       purchaseOrderPaymentResponse.GatewayName, purchaseOrderPaymentResponse.TranzactionId);
         }
     }
-
-
 }

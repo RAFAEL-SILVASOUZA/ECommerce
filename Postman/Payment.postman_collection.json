@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bf9d34df-6e0b-4052-b092-dcc1a8184c4e",
+		"_postman_id": "c0092a88-0ac1-4692-9e7e-4ab4c84ed004",
 		"name": "Payment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3853512"
@@ -12,14 +12,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/Payment",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Payment/{{orderId}}",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
-						"Payment"
+						"Payment",
+						"{{orderId}}"
 					]
 				}
 			},

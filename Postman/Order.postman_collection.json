@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "73620648-3bac-4ed4-afdf-28dce8e85d8d",
+		"_postman_id": "8bce4b70-de8b-4506-b702-1aee9fae330e",
 		"name": "Order",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3853512"
@@ -8,6 +8,30 @@
 	"item": [
 		{
 			"name": "Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"const orderId = responseJson.id;\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate if orderId was generated\", function () {\r",
+							"    pm.expect(orderId).to.be.an(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Save the ACCESS_TOKEN environment value\", function () {\r",
+							"    pm.environment.set(\"orderId\", orderId);\r",
+							"\r",
+							"    pm.expect(pm.environment.get(\"orderId\")).to.equal(orderId);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -21,12 +45,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/Order",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Order",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"Order"
 					]
@@ -49,12 +71,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/Order/reproccess",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Order/reproccess",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"Order",
 						"reproccess"
@@ -69,15 +89,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/Order/1d71c4fa-b5ff-40e1-b2ae-6f37cbda70a7",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Order/{{orderId}}",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"Order",
-						"1d71c4fa-b5ff-40e1-b2ae-6f37cbda70a7"
+						"{{orderId}}"
 					]
 				}
 			},
@@ -89,12 +107,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/Order",
-					"protocol": "http",
+					"raw": "{{BaseUrl}}/Order",
 					"host": [
-						"localhost"
+						"{{BaseUrl}}"
 					],
-					"port": "5000",
 					"path": [
 						"Order"
 					]

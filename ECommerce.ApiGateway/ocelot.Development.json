@@ -39,7 +39,7 @@
         }
       ],
       "UpstreamPathTemplate": "/catalog",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Patch" ],
       "SwaggerKey": "catalog"
     },
     {
@@ -53,7 +53,7 @@
         }
       ],
       "UpstreamPathTemplate": "/catalog/{everything}",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Patch" ],
       "SwaggerKey": "catalog"
     },
     {

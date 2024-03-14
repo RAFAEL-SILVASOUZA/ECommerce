@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using ECommerce.Payment;
 using ECommerce.Payment.Domain.Services;
+using ECommerce.Payment.Domain.Services.Contracts;
 using ECommerce.Payment.Infra;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PaymentDbContext>();
 builder.Services.AddTransient<IPaymentService, PaymentService>();
+builder.Services.AddTransient<IPaymentGatewayService, PaymentGatewayService>();
+builder.Services.AddTransient<ICieloService, CieloService>();
+builder.Services.AddTransient<IStoneService, StoneService>();
 
 builder.Services.AddCap(x =>
 {

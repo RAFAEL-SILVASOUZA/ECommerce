@@ -15,21 +15,21 @@ namespace ECommerce.Order.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Post(PurchaseOrderCreateRequest purchaseOrderCreateRequest)
-           => Ok(await _purchaseOrderService.CreateOrder(purchaseOrderCreateRequest));
+           => Ok(await _purchaseOrderService.CreateOrderAsync(purchaseOrderCreateRequest));
 
         [HttpPost("reproccess")]
         public async Task<IActionResult> Post(PurchaseOrderReproccessRequest purchaseOrderReproccessRequest)
-           => Ok(await _purchaseOrderService.ReproccessOrder(purchaseOrderReproccessRequest));
+           => Ok(await _purchaseOrderService.ReproccessOrderAsync(purchaseOrderReproccessRequest));
 
         [HttpGet]
         public async Task<IActionResult> Get()
-           => Ok(await _purchaseOrderService.GetAllOrders());
+           => Ok(await _purchaseOrderService.GetAllOrdersAsync());
 
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var order = await _purchaseOrderService.GetOrderById(id);
+            var order = await _purchaseOrderService.GetOrderByIdAsync(id);
             return order != null ? Ok(order) : NotFound();
         }
     }

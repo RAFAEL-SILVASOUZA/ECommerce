@@ -1,29 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>9e6ea31d-cc9b-47ef-911c-5c32b08eb5ee</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-
   <ItemGroup>
-	  <PackageReference Include="DotNetCore.CAP" Version="6.1.0" />
-	  <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.1.0" />
-	  <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.1.0" />
-	  <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.1.0" />
-	  <PackageReference Include="Flurl" Version="3.0.6" />
-	  <PackageReference Include="Flurl.Http" Version="3.2.4" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
-	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="DotNetCore.CAP" Version="6.1.0" />
+    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.1.0" />
+    <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.1.0" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.1.0" />
+    <PackageReference Include="Flurl" Version="3.0.6" />
+    <PackageReference Include="Flurl.Http" Version="3.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
 </Project>

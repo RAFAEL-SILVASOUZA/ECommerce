@@ -4,6 +4,6 @@ namespace ECommerce.Order.Domain.Services.Contracts
 {
     public interface ICatalogItemService
     {
-        Task<IList<CatalogItem>> GetProducts(Guid[] ids);
+        Task<IList<CatalogItem>> GetProductsByIdsAsync(Guid[] ids);
     }
 }
