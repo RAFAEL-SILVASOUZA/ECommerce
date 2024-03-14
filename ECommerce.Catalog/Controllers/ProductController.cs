@@ -17,12 +17,12 @@ public class ProductController : ControllerBase
     public async Task<IEnumerable<Product>> Get()
        => await _productService.GetProductsAsync();
 
-    [HttpGet("{ids}")]
-    public async Task<IEnumerable<Product>> Get([FromQuery(Name = "ids")] Guid[] ids)
+    [HttpGet("ids")]
+    public async Task<IEnumerable<Product>> Get([FromQuery] Guid[] ids)
        => await _productService.GetProductsByIdsAsync(ids);
 
 
-    [HttpPatch("{id}")]
-    public async Task<Product> Patch([FromQuery(Name = "id")] Guid id, [FromBody] int quantity)
+    [HttpPatch("id")]
+    public async Task<Product> Patch([FromQuery] Guid id, [FromBody] int quantity)
     => await _productService.ChangeQuantityByProductIdAsync(id, quantity);
 }

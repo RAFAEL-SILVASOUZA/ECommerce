@@ -15,8 +15,8 @@ namespace ECommerce.Payment.Controllers
             _paymentDbContext = paymentDbContext;
         }
 
-        [HttpGet("{orderId}")]
-        public async Task<IActionResult> Get(Guid orderId)
+        [HttpGet("orderId")]
+        public async Task<IActionResult> Get([FromQuery] Guid orderId)
         {
             var payments = await _paymentDbContext
                 .Payments

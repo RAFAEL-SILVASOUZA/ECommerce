@@ -26,8 +26,8 @@ namespace ECommerce.Order.Controllers
            => Ok(await _purchaseOrderService.GetAllOrdersAsync());
 
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        [HttpGet("id")]
+        public async Task<IActionResult> Get([FromQuery] Guid id)
         {
             var order = await _purchaseOrderService.GetOrderByIdAsync(id);
             return order != null ? Ok(order) : NotFound();
