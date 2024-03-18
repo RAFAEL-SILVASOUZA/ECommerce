@@ -1,4 +1,4 @@
-﻿using ECommerce.Payment.Domain.Entities.Enums;
+﻿using ECommerce.Payment.Worker.Domain.Entities.Enums;
 
 namespace ECommerce.Payment.Models
 {

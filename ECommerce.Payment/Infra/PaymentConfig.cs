@@ -1,5 +1,4 @@
-﻿using ECommerce.Payment.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using PaymentModel = ECommerce.Payment.Domain.Entities.Payment;

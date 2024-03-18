@@ -1,5 +1,5 @@
 using ECommerce.Stock.Worker;
-using ECommerce.Stock.Worker.consumers;
+using ECommerce.Stock.Worker.Consumers;
 using ECommerce.Stock.Worker.Infra;
 
 var builder = Host.CreateDefaultBuilder(args)

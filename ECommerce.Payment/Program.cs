@@ -22,23 +22,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PaymentDbContext>();
 builder.Services.AddTransient<IPaymentService, PaymentService>();
-builder.Services.AddTransient<IPaymentGatewayService, PaymentGatewayService>();
-builder.Services.AddTransient<ICieloService, CieloService>();
-builder.Services.AddTransient<IStoneService, StoneService>();
 
-builder.Services.AddCap(x =>
-{
-    var configuration = builder.Configuration;
-    x.UseEntityFramework<PaymentDbContext>();
-    x.UseRabbitMQ(o =>
-    {
-        o.HostName = configuration["RabbitMQ:Host"];
-        o.Password = configuration["RabbitMQ:UserName"];
-        o.UserName = configuration["RabbitMQ:Password"];
-        o.Port = 5672;
-    });
-    x.UseDashboard();
-});
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

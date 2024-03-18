@@ -31,7 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.ApiGateway", "ECo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Workers", "5 - Workers", "{84982802-8C28-48CB-9561-FFE64FB332C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Stock.Worker", "ECommerce.Workres\ECommerce.Stock.Worker\ECommerce.Stock.Worker.csproj", "{90875915-BA13-4CE9-B092-C9C5046BE823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Stock.Worker", "ECommerce.Workres\ECommerce.Stock.Worker\ECommerce.Stock.Worker.csproj", "{90875915-BA13-4CE9-B092-C9C5046BE823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Payment.Worker", "ECommerce.Workres\ECommerce.Payment.Worker\ECommerce.Payment.Worker.csproj", "{3FACFC63-E2A8-4F37-9166-2E9F67097997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Order.Worker", "ECommerce.Workres\ECommerce.Order.Worker\ECommerce.Order.Worker.csproj", "{F75F2948-11B9-4DA5-A5F6-25AD71222BB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{90875915-BA13-4CE9-B092-C9C5046BE823}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90875915-BA13-4CE9-B092-C9C5046BE823}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90875915-BA13-4CE9-B092-C9C5046BE823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FACFC63-E2A8-4F37-9166-2E9F67097997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FACFC63-E2A8-4F37-9166-2E9F67097997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FACFC63-E2A8-4F37-9166-2E9F67097997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FACFC63-E2A8-4F37-9166-2E9F67097997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75F2948-11B9-4DA5-A5F6-25AD71222BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75F2948-11B9-4DA5-A5F6-25AD71222BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75F2948-11B9-4DA5-A5F6-25AD71222BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75F2948-11B9-4DA5-A5F6-25AD71222BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +86,8 @@ Global
 		{ED1F84D6-7B6A-475F-9502-98B862EDDA50} = {8ED39D58-B804-46BF-97F6-D9AC5A73526D}
 		{DD8AB8FD-1C3B-46F2-B222-301402A8D084} = {76A28F46-7684-4B4C-86DD-9CCCF447F7AC}
 		{90875915-BA13-4CE9-B092-C9C5046BE823} = {84982802-8C28-48CB-9561-FFE64FB332C0}
+		{3FACFC63-E2A8-4F37-9166-2E9F67097997} = {84982802-8C28-48CB-9561-FFE64FB332C0}
+		{F75F2948-11B9-4DA5-A5F6-25AD71222BB1} = {84982802-8C28-48CB-9561-FFE64FB332C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {791227D5-3A04-43F0-8212-254878E4AD78}

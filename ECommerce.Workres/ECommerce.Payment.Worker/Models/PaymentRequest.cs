@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Payment.Models
+﻿namespace ECommerce.Payment.Worker.Models
 {
     public class PaymentRequest
     {

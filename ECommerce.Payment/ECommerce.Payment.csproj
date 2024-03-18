@@ -7,12 +7,6 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DotNetCore.CAP" Version="6.1.0" />
-    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.1.0" />
-    <PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.1.0" />
-    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="6.1.0" />
-    <PackageReference Include="Flurl" Version="3.0.6" />
-    <PackageReference Include="Flurl.Http" Version="3.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3" />

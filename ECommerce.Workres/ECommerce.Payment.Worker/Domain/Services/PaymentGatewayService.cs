@@ -1,8 +1,10 @@
-﻿
-using ECommerce.Payment.Domain.Services.Contracts;
+﻿using ECommerce.Payment.Domain.Services.Contracts;
 using ECommerce.Payment.Models;
+using ECommerce.Payment.Worker.Domain.Entities.Enums;
+using ECommerce.Payment.Worker.Domain.Services.Contracts;
+using ECommerce.Payment.Worker.Models;
 
-namespace ECommerce.Payment.Domain.Services;
+namespace ECommerce.Payment.Worker.Domain.Services;
 public class PaymentGatewayService : IPaymentGatewayService
 {
     private readonly ICieloService _cieloService;
@@ -17,10 +19,10 @@ public class PaymentGatewayService : IPaymentGatewayService
     {
         var response = await _cieloService.HandlerPaymentAsync(paymentEntity);
 
-        if (response.PaymentStatus == Entities.Enums.PaymentStatus.Rejected)
+        if (response.PaymentStatus == PaymentStatus.Rejected)
             response = await _stoneService.HandlerPaymentAsync(paymentEntity);
 
-        if (response.PaymentStatus == Entities.Enums.PaymentStatus.Rejected)
+        if (response.PaymentStatus == PaymentStatus.Rejected)
             response.GatewayName = "N/A";
 
         return response;

@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using PaymentModel = ECommerce.Payment.Domain.Entities.Payment;
-
-namespace ECommerce.Payment.Infra
+namespace ECommerce.Payment.Worker.Infra
 {
     public class PaymentDbContext : DbContext
     {
         private readonly IConfiguration _configuration;
-        public DbSet<PaymentModel> Payments { get; set; }
+        public DbSet<Domain.Entities.Payment> Payments { get; set; }
 
         public PaymentDbContext(DbContextOptions<PaymentDbContext> contextOptions,
             IConfiguration configuration) : base(contextOptions)

@@ -3,32 +3,33 @@ using ECommerce.Stock.Worker.Entities;
 using ECommerce.Stock.Worker.Infra;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce.Stock.Worker.consumers;
-
-public interface IProductStockConsumer { }
-
-public class ProductStockConsumer : IProductStockConsumer, ICapSubscribe
+namespace ECommerce.Stock.Worker.Consumers
 {
-    private readonly ProductDBContext _productDBContext;
+    public interface IProductStockConsumer { }
 
-    public ProductStockConsumer(ProductDBContext productDBContext)
-       => _productDBContext = productDBContext;
-
-    [CapSubscribe("ecomerce.catalog.stock")]
-    public async Task ProccessMessageAsync(ProductStock[] productsStock)
+    public class ProductStockConsumer : IProductStockConsumer, ICapSubscribe
     {
-        var ids = productsStock.Select(p => p.ItemId).ToArray();
-        var products = await _productDBContext
-            .Products
-            .Where(x => ids.Contains(x.Id))
-            .ToListAsync();
+        private readonly ProductDBContext _productDBContext;
 
-        foreach (var product in products)
+        public ProductStockConsumer(ProductDBContext productDBContext)
+           => _productDBContext = productDBContext;
+
+        [CapSubscribe("ecomerce.catalog.stock")]
+        public async Task ProccessMessageAsync(ProductStock[] productsStock)
         {
-            var stockProduct = productsStock.Single(x => x.ItemId == product.Id);
-            product.Quantity -= stockProduct.Quantity;
-        }
+            var ids = productsStock.Select(p => p.ItemId).ToArray();
+            var products = await _productDBContext
+                .Products
+                .Where(x => ids.Contains(x.Id))
+                .ToListAsync();
 
-        await _productDBContext.SaveChangesAsync();
+            foreach (var product in products)
+            {
+                var stockProduct = productsStock.Single(x => x.ItemId == product.Id);
+                product.Quantity -= stockProduct.Quantity;
+            }
+
+            await _productDBContext.SaveChangesAsync();
+        }
     }
 }

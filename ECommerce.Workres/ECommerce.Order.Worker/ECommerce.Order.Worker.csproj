@@ -2,19 +2,19 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<Nullable>disable</Nullable>
+		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>dotnet-ECommerce.Stock.Worker-f82d0f0c-067b-41ba-a221-622ca8b8680a</UserSecretsId>
+		<UserSecretsId>dotnet-ECommerce.Order.Worker-54e3278d-33e9-44c2-91a7-ab7f9e12b2fe</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="DotNetCore.CAP" Version="6.1.0" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.1.0" />
 		<PackageReference Include="DotNetCore.CAP.SqlServer" Version="6.1.0" />
-		<PackageReference Include="DotNetCore.CAP" Version="6.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
