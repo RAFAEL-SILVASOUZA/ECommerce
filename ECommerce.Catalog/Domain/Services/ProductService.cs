@@ -1,35 +1,16 @@
-﻿using DotNetCore.CAP;
-using ECommerce.Catalog.Domain.Entities;
+﻿using ECommerce.Catalog.Domain.Entities;
 using ECommerce.Catalog.Domain.Services.Contrects;
 using ECommerce.Catalog.Infra;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Catalog.Domain.Consumer;
 
-public class ProductService : IProductService, ICapSubscribe
+public class ProductService : IProductService
 {
     private readonly CatalogDBContext _catalogDbContext;
 
     public ProductService(CatalogDBContext catalogDbContext)
        => _catalogDbContext = catalogDbContext;
-
-    [CapSubscribe("ecomerce.catalog.stock")]
-    public async Task ProccessMessageAsync(ProductStock[] productsStock)
-    {
-        var ids = productsStock.Select(p => p.ItemId).ToArray();
-        var products = await _catalogDbContext
-            .Products
-            .Where(x => ids.Contains(x.Id))
-            .ToListAsync();
-
-        foreach (var product in products)
-        {
-            var stockProduct = productsStock.Single(x => x.ItemId == product.Id);
-            product.Quantity -= stockProduct.Quantity;
-        }
-
-        await _catalogDbContext.SaveChangesAsync();
-    }
 
     public async Task<IEnumerable<Product>> GetProductsAsync()
        => await _catalogDbContext.Products.AsNoTracking().ToListAsync();

@@ -4,7 +4,6 @@ namespace ECommerce.Catalog.Domain.Services.Contrects;
 
 public interface IProductService
 {
-    Task ProccessMessageAsync(ProductStock[] productStock);
     Task<IEnumerable<Product>> GetProductsAsync();
     Task<IEnumerable<Product>> GetProductsByIdsAsync(Guid[] ids);
 
